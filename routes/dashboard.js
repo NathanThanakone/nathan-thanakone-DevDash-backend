@@ -6,8 +6,6 @@ const API_KEY = process.env.API_KEY;
 
 const URL = 'https://wakatime.com/api/v1/'
 const codingActivity_URL = 'https://wakatime.com/share/@384bee01-d4f3-4943-8eeb-e225e0a39109/549dc94e-2ca7-4cae-8476-4e59d22a7f1c.json'
-const languages_URL = 'https://wakatime.com/share/@384bee01-d4f3-4943-8eeb-e225e0a39109/78fff58b-17c5-4377-a444-5ac7b100c395.json'
-
 
 router.get('/projects', (req, res) => {
     axios
@@ -26,9 +24,9 @@ router.get('/codingactivity', (req, res) => {
         })
 })
 
-router.get('/codinglanguages', (req, res) => {
+router.get('/stats', (req, res) => {
     axios
-        .get(`${languages_URL}`)
+        .get(`${URL}users/current/stats/last_7_days${API_KEY}`)
         .then(response => {
             res.json(response.data.data);
         })
