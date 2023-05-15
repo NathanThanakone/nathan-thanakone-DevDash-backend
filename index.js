@@ -4,10 +4,13 @@ const cors = require('cors');
 require('dotenv').config();
 const PORT = process.env.PORT || 8080;
 const goalsRoute = require('./routes/goals');
+const dashboardRoute = require('./routes/dashboard');
 
 app.use(cors());
 app.use(express.json());
 
+// route handlers for dashboard and goals routes
+app.use('/dashboard', dashboardRoute);
 app.use('/goals', goalsRoute);
 
 app.listen(PORT, () => {
